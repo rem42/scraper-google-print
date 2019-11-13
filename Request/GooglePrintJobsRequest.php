@@ -8,14 +8,14 @@ use Scraper\Scraper\Annotation\UrlAnnotation;
  * Class GooglePrintSearchRequest
  * @package Scraper\ScraperGooglePrint\Request
  *
- * @UrlAnnotation(url="/jobs", method="POST", contentType="JSON", protocol="HTTP")
+ * @UrlAnnotation(url="/jobs", method="GET", contentType="JSON", protocol="HTTP")
  */
 class GooglePrintJobsRequest extends GooglePrintRequest
 {
 
 	public function getBody()
 	{
-		return [];
+        return [];
 	}
 
 	public function getHeaders()
@@ -29,6 +29,7 @@ class GooglePrintJobsRequest extends GooglePrintRequest
 	{
 		return [
 			'printerid' => $this->printerId,
+            'limit' => 10
 		];
 	}
 }
