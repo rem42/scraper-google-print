@@ -3,18 +3,17 @@
 namespace Scraper\ScraperGooglePrint\Api;
 
 use JMS\Serializer\SerializerBuilder;
-use Scraper\ScraperGooglePrint\Entity\GooglePrintJobs;
+use Scraper\ScraperGooglePrint\Entity\GooglePrintDeleteJob;
 
 class GooglePrintDeleteJobApi extends GooglePrintApi
 {
-	public function execute()
-	{
-		$data         = json_encode($this->data);
-		dump($data);
-		$serializer   = SerializerBuilder::create()
-			->build()
-		;
-		$this->object = $serializer->deserialize($data, GooglePrintJobs::class, 'json');
-		return $this->object;
-	}
+    public function execute()
+    {
+        $data         = json_encode($this->data);
+        $serializer   = SerializerBuilder::create()
+            ->build()
+        ;
+        $this->object = $serializer->deserialize($data, GooglePrintDeleteJob::class, 'json');
+        return $this->object;
+    }
 }

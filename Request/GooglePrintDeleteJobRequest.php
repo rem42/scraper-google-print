@@ -6,31 +6,31 @@ use Scraper\Scraper\Annotation\UrlAnnotation;
 
 /**
  * Class GooglePrintDeleteJobRequest
- * @package Scraper\ScraperGooglePrint\Request
  *
  * @UrlAnnotation(url="/deletejob", method="GET", contentType="JSON", protocol="HTTP")
  */
 class GooglePrintDeleteJobRequest extends GooglePrintRequest
 {
     protected $jobId;
-	public function getBody()
-	{
+
+    public function getBody()
+    {
         return [];
-	}
+    }
 
-	public function getHeaders()
-	{
-		return [
-			'Authorization' => 'Bearer ' . $this->accessToken,
-		];
-	}
+    public function getHeaders()
+    {
+        return [
+            'Authorization' => 'Bearer ' . $this->accessToken,
+        ];
+    }
 
-	public function getParameters()
-	{
-		return [
-			'jobid' => $this->jobId,
-		];
-	}
+    public function getParameters()
+    {
+        return [
+            'jobid' => $this->jobId,
+        ];
+    }
 
     /**
      * @return mixed

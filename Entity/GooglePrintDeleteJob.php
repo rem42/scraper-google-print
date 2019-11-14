@@ -2,10 +2,9 @@
 
 namespace Scraper\ScraperGooglePrint\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation as Serializer;
 
-class GooglePrintJobs
+class GooglePrintDeleteJob
 {
     /**
      * @var boolean
@@ -20,59 +19,34 @@ class GooglePrintJobs
      */
     protected $request;
     /**
-     * @var ArrayCollection|GooglePrintJob[]
-     * @Serializer\Type("ArrayCollection<Scraper\ScraperGooglePrint\Entity\GooglePrintJob>")
-     * @Serializer\SerializedName("jobs")
-     */
-    protected $jobs;
-    /**
-     * @var ArrayCollection
-     * @Serializer\Type("ArrayCollection")
-     * @Serializer\SerializedName("range")
-     */
-    protected $range;
-    /**
      * @var string
      * @Serializer\Type("string")
      * @Serializer\SerializedName("xsrf_token")
      */
     protected $xsrfToken;
+    /**
+     * @var string
+     * @Serializer\Type("string")
+     * @Serializer\SerializedName("message")
+     */
+    protected $message;
 
     /**
-     * @return ArrayCollection|GooglePrintJob[]
+     * @return bool
      */
-    public function getJobs()
+    public function isSuccess(): ?bool
     {
-        return $this->jobs;
+        return $this->success;
     }
 
     /**
-     * @param ArrayCollection|GooglePrintJob[] $jobs
+     * @param bool $success
      *
      * @return $this
      */
-    public function setJobs($jobs)
+    public function setSuccess(?bool $success): self
     {
-        $this->jobs = $jobs;
-        return $this;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getRange(): ?ArrayCollection
-    {
-        return $this->range;
-    }
-
-    /**
-     * @param ArrayCollection $range
-     *
-     * @return $this
-     */
-    public function setRange(?ArrayCollection $range)
-    {
-        $this->range = $range;
+        $this->success = $success;
         return $this;
     }
 
@@ -89,7 +63,7 @@ class GooglePrintJobs
      *
      * @return $this
      */
-    public function setRequest(?GooglePrintRequest $request)
+    public function setRequest(?GooglePrintRequest $request): self
     {
         $this->request = $request;
         return $this;
@@ -108,28 +82,28 @@ class GooglePrintJobs
      *
      * @return $this
      */
-    public function setXsrfToken(?string $xsrfToken)
+    public function setXsrfToken(?string $xsrfToken): self
     {
         $this->xsrfToken = $xsrfToken;
         return $this;
     }
 
     /**
-     * @return bool
+     * @return string
      */
-    public function isSuccess(): ?bool
+    public function getMessage(): ?string
     {
-        return $this->success;
+        return $this->message;
     }
 
     /**
-     * @param bool $success
+     * @param string $message
      *
      * @return $this
      */
-    public function setSuccess(?bool $success)
+    public function setMessage(?string $message): self
     {
-        $this->success = $success;
+        $this->message = $message;
         return $this;
     }
 }
